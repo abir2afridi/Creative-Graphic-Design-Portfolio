@@ -15,10 +15,66 @@ const Hero: React.FC = () => {
              <ArrowLoop className="w-12 h-12 absolute -bottom-10 left-8 text-white rotate-45 opacity-80" />
           </div>
 
-          <h1 className="font-display text-[6rem] sm:text-[9rem] md:text-[10rem] text-white leading-[0.85] tracking-tight drop-shadow-xl select-none">
-            PORT
-            <br />
-            <span className="text-brand-yellow">FOLIO</span>
+          <h1 className="relative w-full max-w-[800px] select-none" aria-label="Portfolio">
+            <span className="sr-only">PORTFOLIO</span>
+            <svg viewBox="0 0 500 230" className="w-full h-auto drop-shadow-xl overflow-visible">
+               <defs>
+                 <filter id="sketchy">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="3" result="noise" />
+                    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+                 </filter>
+                 <style>
+                   {`
+                     .draw-text {
+                       font-family: 'Anton', sans-serif;
+                       font-size: 140px;
+                       stroke-width: 2.5px;
+                       stroke-linecap: round;
+                       stroke-linejoin: round;
+                       paint-order: stroke;
+                       stroke-dasharray: 1000;
+                       stroke-dashoffset: 1000;
+                       animation: draw 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards, fill 0.8s ease-in-out 2.2s forwards;
+                     }
+                     
+                     .draw-text-delay {
+                        animation-delay: 0.5s, 2.5s;
+                     }
+
+                     @keyframes draw {
+                       to { stroke-dashoffset: 0; }
+                     }
+                     @keyframes fill {
+                       from { fill-opacity: 0; }
+                       to { fill-opacity: 1; }
+                     }
+                   `}
+                 </style>
+               </defs>
+               
+               <text 
+                 x="0" 
+                 y="115" 
+                 className="draw-text" 
+                 fill="white" 
+                 stroke="white" 
+                 fillOpacity="0"
+                 filter="url(#sketchy)"
+               >
+                 PORT
+               </text>
+               <text 
+                 x="0" 
+                 y="220" 
+                 className="draw-text draw-text-delay" 
+                 fill="#FFD700" 
+                 stroke="#FFD700" 
+                 fillOpacity="0"
+                 filter="url(#sketchy)"
+               >
+                 FOLIO
+               </text>
+            </svg>
           </h1>
           
           <div className="mt-8 bg-white text-brand-blue px-6 py-3 rounded-full font-display text-xl sm:text-2xl uppercase tracking-wider transform -rotate-2 border-4 border-brand-blue shadow-[4px_4px_0px_0px_#FFD700]">
