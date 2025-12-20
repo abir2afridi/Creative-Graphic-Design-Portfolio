@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative p-6 sm:p-12 overflow-hidden pt-24 bg-brand-blue selection:bg-brand-yellow selection:text-brand-dark">
+    <section className="min-h-screen flex items-start md:items-center justify-center relative p-6 sm:p-12 overflow-hidden pt-44 sm:pt-48 pb-12 bg-brand-blue selection:bg-brand-yellow selection:text-brand-dark">
       
       {/* Noise Texture Overlay for Paper Feel */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-[1] mix-blend-overlay"

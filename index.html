@@ -52,6 +52,10 @@
         background-image: radial-gradient(#009ccf 1px, transparent 1px);
         background-size: 20px 20px;
       }
+      /* Ensure sections don't hide under fixed navbar */
+      [id] {
+        scroll-margin-top: 120px;
+      }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 10px;
