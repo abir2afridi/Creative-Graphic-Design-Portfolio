@@ -22,21 +22,26 @@ Instructions:
 - Use emojis occasionally.
 `;
 
+const getApiKey = () => {
+  try {
+    return typeof process !== 'undefined' ? process.env.API_KEY : '';
+  } catch (e) {
+    return '';
+  }
+};
+
 export const sendMessageToGemini = async (history: { role: string; text: string }[], newMessage: string): Promise<string> => {
   try {
-    const apiKey = process.env.API_KEY;
+    const apiKey = getApiKey();
     if (!apiKey) {
-      throw new Error("API Key not found");
+      console.warn("API Key not found - Gemini functionality disabled.");
+      return "I'm currently taking a quick sketch break! (Missing API Key). Check out the portfolio below while I'm away.";
     }
 
     const ai = new GoogleGenAI({ apiKey });
     
-    // Transform history to Gemini format if needed, but for simple content generation
-    // passing the context in the prompt or using a chat session is best.
-    // Here we use a chat session.
-    
     const chat = ai.chats.create({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3-flash-preview',
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
       },
